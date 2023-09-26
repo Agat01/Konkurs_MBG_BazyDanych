@@ -1,32 +1,3 @@
-insert into dyrektor(tytul,imie,nazwisko) values('b','b','b');
-
-insert into szkola (miejscowosc,nazwa_zespolu_szkol,nazwa,imienia,adres,nr_tel,email,id_dyrektor,id_powiat,id_typ_szkoly) values (d,d,d,d,d,d,d,
-(Select id_dyrektor
-from dyrektor
-where tytul='b' and imie='b' and nazwisko='b'),1,1);
-
-Select id_dyrektor
-from dyrektor
-where tytul='b' and imie='b' and nazwisko='b';
-
-delete from szkola where id_szkola=22;
-delete from nauczyciel where id_szkola=22;
-
-Insert 
-into szkola 
-(miejscowosc,nazwa_zespolu_szkol,nazwa,imienia,nr_tel,email,id_dyrektor,id_powiat,id_typ_szkoly,ulica,nr_domu,kod_pocztowy,miejscowosc2)
-values('z','z','z','z','z','z',56,8,1,'z','z','z','z');
-
-insert into typ_szkoly (nazwa, id_rodzaj) values('szko≥a podstawowa - klasa 6',1);
-insert into typ_szkoly (nazwa, id_rodzaj) values('szko≥a podstawowa - klasa 7',1);
-insert into typ_szkoly (nazwa, id_rodzaj) values('szko≥a podstawowa - klasa 8',2);
-insert into typ_szkoly (nazwa, id_rodzaj) values('szko≥a ponadpodstawowa - liceum - klasa 1',2);
-insert into typ_szkoly (nazwa, id_rodzaj) values('szko≥a ponadpodstawowa - technikum - klasa 1',2);
-
-SELECT id_typ_szkoly FROM typ_szkoly where nazwa='szko≥a podstawowa - klasa 8';
-
-Insert into klasa values(null,'c',23,2,231,184);
-
 select d.tytul, d.imie, d.nazwisko, sz.miejscowosc2, sz.nazwa_zespolu_szkol,
 sz.nazwa, sz.imienia,sz.nr_tel,sz.email,p.nazwa,t.nazwa,sz.ulica, sz.nr_domu,
 sz.kod_pocztowy, sz.miejscowosc2,n.tytul,n.imie,n.nazwisko,n.email, k.nazwa,
@@ -79,7 +50,7 @@ select p.nazwa, sz.miejscowosc,sz.nazwa, sz.id_szkola,k.nazwa as nazwaKlasy,k.id
 from klasa k join szkola sz on(k.id_szkola=sz.id_szkola)
              join powiat p on(p.id_powiat=sz.id_powiat)
              join typ_klasy t on(t.id_typ_klasy=k.id_typ_klasy)
-where p.nazwa='Zielona GÛra';
+where p.nazwa='Zielona GÈèéa';
 
 -- 
 select count(DISTINCT sz.id_szkola) 
@@ -166,7 +137,7 @@ select distinct sz.id_szkola,sz.nazwa || ', ' || sz.miejscowosc
 from szkola sz join klasa k on(k.id_szkola=sz.id_szkola)
                join klasa_region kr on(k.id_klasa=kr.id_klasa)
                join region r on(r.id_region=kr.id_region)
-where r.nazwa='region dolnoúlπsko-opolski';
+where r.nazwa='region dolnoÓØìÈõ∂ko-opolski';
 
 select r.nazwa 
 from uzytkownik_rola ur join uzytkownik u on(ur.id_uzytkownik=u.id_uzytkownik)
@@ -177,14 +148,14 @@ select p.id_powiat, p.id_wojewodztwo,w.nazwa, k.id_klasa
 from powiat p join wojewodztwo w on(p.id_wojewodztwo=w.id_wojewodztwo)
               join szkola sz on(sz.id_powiat=p.id_powiat)
               join klasa k on(k.id_szkola=sz.id_szkola)
-where (w.nazwa='dolnoúlπskie' or w.nazwa='opolskie') and (k.id_typ_klasy=1 or k.id_typ_klasy=2);
+where (w.nazwa='dolnoÓØìÈõ∂kie' or w.nazwa='opolskie') and (k.id_typ_klasy=1 or k.id_typ_klasy=2);
 
 insert into klasa_region(id_klasa,id_region)
 select k.id_klasa, 1
 from powiat p join wojewodztwo w on(p.id_wojewodztwo=w.id_wojewodztwo)
               join szkola sz on(sz.id_powiat=p.id_powiat)
               join klasa k on(k.id_szkola=sz.id_szkola)
-where (w.nazwa='dolnoúlπskie' or w.nazwa='opolskie');
+where (w.nazwa='dolnoÓØìÈõ∂kie' or w.nazwa='opolskie');
 
 insert into klasa_region(id_klasa,id_region)
 select k.id_klasa, 2
@@ -205,14 +176,14 @@ select k.id_klasa, 4
 from powiat p join wojewodztwo w on(p.id_wojewodztwo=w.id_wojewodztwo)
               join szkola sz on(sz.id_powiat=p.id_powiat)
               join klasa k on(k.id_szkola=sz.id_szkola)
-where w.nazwa='ma≥opolskie' and (k.id_typ_klasy=1 or k.id_typ_klasy=2);
+where w.nazwa='maÈÄôpolskie' and (k.id_typ_klasy=1 or k.id_typ_klasy=2);
 
 insert into klasa_region(id_klasa,id_region)
 select k.id_klasa, 5
 from powiat p join wojewodztwo w on(p.id_wojewodztwo=w.id_wojewodztwo)
               join szkola sz on(sz.id_powiat=p.id_powiat)
               join klasa k on(k.id_szkola=sz.id_szkola)
-where w.nazwa='ma≥opolskie' and (k.id_typ_klasy=3 or k.id_typ_klasy=4 or k.id_typ_klasy=5);
+where w.nazwa='maÈÄôpolskie' and (k.id_typ_klasy=3 or k.id_typ_klasy=4 or k.id_typ_klasy=5);
 
 insert into klasa_region(id_klasa,id_region)
 select k.id_klasa, 6
@@ -255,7 +226,7 @@ select k.id_klasa, 11
 from powiat p join wojewodztwo w on(p.id_wojewodztwo=w.id_wojewodztwo)
               join szkola sz on(sz.id_powiat=p.id_powiat)
               join klasa k on(k.id_szkola=sz.id_szkola)
-where (w.nazwa='úlπskie');
+where (w.nazwa='ÓØìÈõ∂kie');
 
 insert into klasa_region(id_klasa,id_region)
 select k.id_klasa, 12
